@@ -1,13 +1,14 @@
 class Api::V1::FavoritesController < ApplicationController
-  before_action :find_user
-  def create
+  before_action :verify_user
+  def create 
     Favorite.new(favorite_params)
     render json: { 'success': 'Favorite added successfully' }, status: :created
   end
 
   private
-  def find_user
+  def verify_user
     @user = User.find_by(api_key: params[:api_key])
+    return render json: ErrorSerializer.user_not_found, status: 400 if @user.nil?
   end
 
   def favorite_params

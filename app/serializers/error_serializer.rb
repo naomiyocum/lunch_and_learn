@@ -22,4 +22,16 @@ class ErrorSerializer
       ]
     }
   end
+
+  def self.user_not_found
+    {
+      'errors': [
+        {
+          "status": 'PLEASE TRY AGAIN',
+          "message": "User does not exist",
+          "code": 400
+        }
+      ]
+    }
+  end
 end
