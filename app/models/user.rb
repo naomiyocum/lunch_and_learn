@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :favorites
   validates :name, :email, presence: true
   validates :email, uniqueness: true
 
