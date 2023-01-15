@@ -2,7 +2,7 @@ class LearningResourceFacade
   def self.resources_for(country)
     photo_data = convert_photos(UnsplashService.get_photos_from(country))
     video_data = convert_vid(YoutubeService.get_youtube_video(country))
-    LearningResource.new(photo_data, video_data, country)
+    LearningResource.new(country, video_data, photo_data)
   end
 
   def self.convert_vid(data)
