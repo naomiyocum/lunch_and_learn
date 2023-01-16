@@ -16,8 +16,6 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def verify_country
-    countries = CountriesFacade.all_countries
-    value = countries.any? {|country| country.name == params[:country].capitalize}
-    render json: ErrorSerializer.invalid_country, status: 400 if value == false
+    return render json: ErrorSerializer.invalid_country, status: 400 unless Country.valid_country?(params[:country])
   end
 end
