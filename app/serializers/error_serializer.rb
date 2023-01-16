@@ -34,4 +34,16 @@ class ErrorSerializer
       ]
     }
   end
+
+  def self.favorite_not_found
+    {
+      'errors': [
+        {
+          "status": 'PLEASE TRY AGAIN',
+          "message": "Favorite does not exist",
+          "code": 400
+        }
+      ]
+    }
+  end
 end
