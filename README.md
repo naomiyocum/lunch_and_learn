@@ -55,6 +55,7 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
 
 - ### GET /api/v1/recipes
   > fetch recipes based on a particular country
+  > if no country is provided, a random country will be searched for you
   
   | Query Parameter        | Type          |  |
   | ------------- |:-------------:| -----:|
@@ -91,6 +92,7 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
 
 - ### GET /api/v1/learning_resources
   > fetch learning resources for a particular country
+  > if no country is provided, a random country will be searched for you
 
   | Query Parameter        | Type          |  |
   | ------------- |:-------------:| -----:|
