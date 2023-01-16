@@ -43,7 +43,7 @@ RSpec.describe 'Get Recipes Info' do
     end
   end
 
-  it 'returns an error if country does not exist' do
+  it 'returns an error if country is invalid' do
     VCR.use_cassette 'pizza country' do
       country = 'Pizza'
       headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json'}

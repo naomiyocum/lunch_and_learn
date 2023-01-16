@@ -7,6 +7,7 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   private
+  
   def verify_params
     if params[:country]
       verify_country
