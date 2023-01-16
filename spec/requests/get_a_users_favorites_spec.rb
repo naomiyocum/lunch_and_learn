@@ -51,7 +51,7 @@ RSpec.describe 'Get A User\'s Favorites' do
     expect(parsed_response[:data]).to eq([])
   end
 
-  it 'sends an error message with appropriate response if the api_key is invalid' do
+  it 'sends an appropriate error message with appropriate response if the api_key is invalid' do
     params = { 'api_key': "keyskeyskeys" }
     get "/api/v1/favorites", headers: @headers, params: params
 
@@ -60,5 +60,15 @@ RSpec.describe 'Get A User\'s Favorites' do
     expect(parsed_response).to have_key :errors
     expect(parsed_response[:errors][0][:status]).to eq('PLEASE TRY AGAIN')
     expect(parsed_response[:errors][0][:message]).to eq('User does not exist')
+  end
+
+   it 'returns an appropriate error message if params are missing' do
+    get "/api/v1/favorites", headers: @headers
+
+    expect(response.status).to eq(400)
+    parsed_response = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed_response).to have_key :errors
+    expect(parsed_response[:errors][0][:status]).to eq('PLEASE TRY AGAIN')
+    expect(parsed_response[:errors][0][:message]).to eq('Make sure to include all necessary params')
   end
 end
