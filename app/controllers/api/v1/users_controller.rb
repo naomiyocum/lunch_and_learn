@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
     if new_user.save
       render json: UserSerializer.new(new_user), status: :created
     else
-      render json: ErrorSerializer.user_error(new_user.errors), status: 400
+      render json: ErrorSerializer.user_creation_error(new_user.errors), status: 400
     end
   end
 

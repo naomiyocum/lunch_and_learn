@@ -23,7 +23,7 @@ RSpec.describe 'Delete a Favorite' do
     expect(Favorite.count).to eq(1)
   end
 
-  it 'returns an error message if no favorite is found' do
+  it 'returns an appropriate error message if no favorite is found' do
     params = { 'api_key': "igotthekeys", 'recipe_link': 'https://www.justonecookbook.com/okinawa-soba/'}
     delete '/api/v1/favorites', headers: @headers, params: params, as: :json
 
@@ -32,5 +32,16 @@ RSpec.describe 'Delete a Favorite' do
     expect(parsed_response).to have_key :errors
     expect(parsed_response[:errors][0][:status]).to eq('PLEASE TRY AGAIN')
     expect(parsed_response[:errors][0][:message]).to eq('Favorite does not exist')
+  end
+
+  it 'returns an appropriate error message if params are missing' do
+    params = { 'api_key': "igotthekeys"}
+    delete '/api/v1/favorites', headers: @headers, params: params, as: :json
+
+    expect(response.status).to eq(400)
+    parsed_response = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed_response).to have_key :errors
+    expect(parsed_response[:errors][0][:status]).to eq('PLEASE TRY AGAIN')
+    expect(parsed_response[:errors][0][:message]).to eq('Make sure to include all necessary params')
   end
 end

@@ -31,4 +31,15 @@ RSpec.describe 'Post Favorites' do
     expect(parsed_response[:errors][0][:status]).to eq('PLEASE TRY AGAIN')
     expect(parsed_response[:errors][0][:message]).to eq('User does not exist')
   end
+
+  it 'sends an appropriate error message if the body is missing some params' do
+    body = { 'api_key': "#{@user.api_key}", 'recipe_link': 'https://www.justonecookbook.com/okinawa-soba/', 'recipe_title': 'Okinawa Soba 沖縄そば'}
+    post '/api/v1/favorites', headers: @headers, params: body, as: :json
+
+    expect(response.status).to eq(400)
+    parsed_response = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed_response).to have_key :errors
+    expect(parsed_response[:errors][0][:status]).to eq('PLEASE TRY AGAIN')
+    expect(parsed_response[:errors][0][:message]).to eq('Make sure to include all necessary params')
+  end
 end
