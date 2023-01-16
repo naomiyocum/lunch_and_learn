@@ -24,21 +24,23 @@ RSpec.describe 'Get Recipes Info' do
     end
   end
 
-  xit 'checks recipes for a random country if no country is provided' do
+  it 'checks recipes for a random country if no country is provided' do
     json = File.read('spec/fixtures/random_country.json')
 
     stub_request(:get, 'https://restcountries.com/v3.1/all')
       .with(query: hash_including({}))
       .to_return(status: 200, body: json)
-
-    headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json'}
-    get "/api/v1/recipes", headers: headers
-
-    expect(response).to be_successful
     
-    parsed_response = JSON.parse(response.body, symbolize_names: true)
-    expect(parsed_response).to be_a Hash
-    expect(parsed_response).to have_key(:data)
+    VCR.use_cassette 'Grenada' do
+      headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json'}
+      get "/api/v1/recipes", headers: headers
+
+      expect(response).to be_successful
+      
+      parsed_response = JSON.parse(response.body, symbolize_names: true)
+      expect(parsed_response).to be_a Hash
+      expect(parsed_response).to have_key(:data)
+    end
   end
 
   it 'returns an error if country does not exist' do
