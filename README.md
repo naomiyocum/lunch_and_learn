@@ -59,9 +59,10 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   | Query Parameter        | Type          |  |
   | ------------- |:-------------:| -----:|
   | country      | string | Optional |
-   > if no country is provided, a random country will be searched for you
+
+  <sub><sup>if no country is provided, a random country will be searched for you</sup></sub>
   
-  #### Example Response
+    #### Example Response
   ```
   {
     "data": [
@@ -96,7 +97,8 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   | Query Parameter        | Type          |  |
   | ------------- |:-------------:| -----:|
   | country      | string | Optional |
-  > if no country is provided, a random country will be searched for you
+  
+  <sub><sup>if no country is provided, a random country will be searched for you</sup></sub>
   
   #### Example Response
   ```
