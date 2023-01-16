@@ -25,5 +25,14 @@ RSpec.describe Country do
         end
       end
     end
+
+    describe '.random_country' do
+      it 'returns a random country each time' do
+        VCR.use_cassette 'random_country' do
+          country = Country.random_country
+          expect(country).to be_a String
+        end
+      end
+    end
   end
 end

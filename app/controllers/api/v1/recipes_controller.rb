@@ -7,12 +7,12 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   private
-  
+
   def verify_params
     if params[:country]
       verify_country
     else
-      params[:country] = CountriesFacade.all_countries.sample.name
+      params[:country] = Country.random_country
     end
   end
 
