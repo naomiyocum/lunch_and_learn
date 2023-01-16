@@ -1,6 +1,6 @@
 class Api::V1::LearningResourcesController < ApplicationController
   before_action :verify_params
-  
+
   def show
     resource = LearningResourceFacade.resources_for(params[:country])
     render json: LearningResourceSerializer.new(resource)
@@ -12,7 +12,7 @@ class Api::V1::LearningResourcesController < ApplicationController
     if params[:country]
       verify_country
     else
-      params[:country] = CountriesFacade.all_countries.sample.name
+      params[:country] = Country.random_country
     end
   end
 
