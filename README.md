@@ -1,5 +1,12 @@
-# Lunch and Learn 🍱📚
-![GitHub top language](https://img.shields.io/github/languages/top/naomiyocum/rails-engine?color=yellow)
+<h1 align="center"> Lunch and Learn 🍱📚 </h1>
+
+![GitHub Contributors](https://img.shields.io/github/contributors/naomiyocum/lunch_and_learn)
+![GitHub language count](https://img.shields.io/github/languages/count/naomiyocum/lunch_and_learn)
+![GitHub top language](https://img.shields.io/github/languages/top/naomiyocum/lunch_and_learn?color=yellow)
+
+<div align="center">
+  <img src="https://media3.giphy.com/media/3oz8xB06mHyoGE7ZoQ/giphy.gif?cid=ecf05e47k1n1ibrrbqr4tjzmtg148yazo3vep62jc826m0x3&rid=giphy.gif&ct=g" width="600" height="300"/>
+</div>
 
 ## Table of Contents
 * [General Info](#general-info)
