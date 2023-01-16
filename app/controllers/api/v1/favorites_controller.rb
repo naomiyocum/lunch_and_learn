@@ -4,8 +4,7 @@ class Api::V1::FavoritesController < ApplicationController
   before_action :find_favorite, only: %i[destroy]
 
   def index
-    favorites = Favorite.find_my_favorites(params[:api_key])
-    render json: FavoriteSerializer.new(favorites)
+    render json: FavoriteSerializer.new(@user.favorites)
   end
   
   def create 

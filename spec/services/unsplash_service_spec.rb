@@ -11,19 +11,23 @@ RSpec.describe UnsplashService do
 
     describe '.get_url' do
       it 'parses through the response body and returns a JSON hash with keys as symbols' do
-        url = UnsplashService.get_url("/search/photos?query=Japan")
-        expect(url).to be_a Hash
+        VCR.use_cassette 'Unsplash Service' do
+          url = UnsplashService.get_url("/search/photos?query=Japan")
+          expect(url).to be_a Hash
+        end
       end
     end
 
     describe '.get_photos' do
       it 'returns photos from a specific country' do
-        photos = UnsplashService.get_photos_from('Japan')
-        expect(photos[:results].count).to eq(10)
+        VCR.use_cassette 'Unsplash Service' do
+          photos = UnsplashService.get_photos_from('Japan')
+          expect(photos[:results].count).to eq(10)
 
-        photo = photos[:results][0]
-        expect(photo).to have_key :alt_description
-        expect(photo[:urls]).to have_key :full
+          photo = photos[:results][0]
+          expect(photo).to have_key :alt_description
+          expect(photo[:urls]).to have_key :full
+        end
       end
     end
   end
