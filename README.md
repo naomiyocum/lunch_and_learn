@@ -135,6 +135,8 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   | ------------- |:-------------:| -----:|
   | name      | string | Required |
   | email      | string | Required |
+  | password      | string | Required |
+  | password_confirmation      | string | Required |
   
   #### Example Response
   ```
