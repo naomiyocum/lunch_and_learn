@@ -25,6 +25,7 @@ We are building an application that allows users to search for cuisines by count
 - Expose an API that requires an authentication token
 - Expose an API for CRUD functionality
 - Determine completion criteria based on the needs of other developers
+- Create appropriate error messages to assist developers
 - Test both API consumption and exposure, making use of Webmock and VCR
 
 ## Technologies
