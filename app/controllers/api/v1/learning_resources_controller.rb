@@ -2,8 +2,8 @@ class Api::V1::LearningResourcesController < ApplicationController
   before_action :verify_params
 
   def show
-    resource = LearningResourceFacade.resources_for(params[:country])
-    render json: LearningResourceSerializer.new(resource)
+    resources = LearningResourceFacade.resources_for(params[:country])
+    render json: LearningResourceSerializer.new(resources)
   end
 
   private

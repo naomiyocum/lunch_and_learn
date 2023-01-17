@@ -3,7 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Get A User\'s Favorites' do
   before do
     @headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json'}
-    body = { 'name': 'Monkey Luffy', 'email': 'pirateking@onepiece.jp' }
+     body = { 
+              'name': 'Monkey Luffy',
+              'email': 'pirateking@onepiece.jp',
+              'password': 'gostrawhats',
+              'password_confirmation': 'gostrawhats'
+            }
     post '/api/v1/users', headers: headers, params: body, as: :json
     @user = User.last
   end

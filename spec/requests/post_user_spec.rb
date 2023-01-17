@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Post User' do
   it 'creates the user in the database with a random api key' do
     headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json'}
-    body = { 'name': 'Zuko Yocum', 'email': 'firenationrules@avatar.com' }
+    body = { 'name': 'Zuko Yocum',
+             'email': 'firenationrules@avatar.com',
+             'password': 'password123',
+             'password_confirmation': 'password123' }
     post '/api/v1/users', headers: headers, params: body, as: :json
     
     expect(response).to be_successful
@@ -24,14 +27,17 @@ RSpec.describe 'Post User' do
 
   it 'sends an error message with appropriate response when user creation has a duplicated email' do
     headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json'}
-    body = { 'name': 'Zuko Yocum', 'email': 'firenationrules@avatar.com' }
+    body = { 'name': 'Zuko Yocum',
+             'email': 'firenationrules@avatar.com',
+             'password': 'password123',
+             'password_confirmation': 'password123' }
     post '/api/v1/users', headers: headers, params: body, as: :json
     
     expect(response).to be_successful
     expect(response.status).to eq(201)
 
     headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json'}
-    body = { 'name': 'Naomi Yocum', 'email': 'firenationrules@avatar.com' }
+    body = { 'name': 'Naomi Yocum', 'email': 'firenationrules@avatar.com', password: 'hello', password_confirmation: 'hello' }
     post '/api/v1/users', headers: headers, params: body, as: :json
 
     expect(response.status).to eq(400)
@@ -40,13 +46,13 @@ RSpec.describe 'Post User' do
     expect(parsed_response[:errors][0][:message]).to eq('Email has already been taken')
   end
 
-  it 'sends an appropriate error message when user does not include name or email' do
+  it 'sends an appropriate error message when user does not include name or email or password' do
     headers = { 'CONTENT_TYPE' => 'application/json', 'Accept' => 'application/json'}
     post '/api/v1/users', headers: headers, params: body, as: :json
 
     expect(response.status).to eq(400)
     parsed_response = JSON.parse(response.body, symbolize_names: true)
     expect(parsed_response).to have_key :errors
-    expect(parsed_response[:errors][0][:message]).to eq('Name can\'t be blank and Email can\'t be blank')
+    expect(parsed_response[:errors][0][:message]).to eq('Name can\'t be blank, Email can\'t be blank, and Password can\'t be blank')
   end
 end
