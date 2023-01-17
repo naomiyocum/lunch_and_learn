@@ -29,7 +29,7 @@ RSpec.describe 'Post User Session' do
     expect(parsed_response[:data][:attributes]).to have_key :api_key
   end
 
-  xit 'gives an appropriate error message when user does not exist' do
+  it 'gives an appropriate error message when user does not exist' do
     body = { 'email': 'naomiyocum24@gmail.com', 'password': 'password123' }
     post '/api/v1/sessions', headers: @headers, params: body, as: :json
 
@@ -39,13 +39,13 @@ RSpec.describe 'Post User Session' do
     expect(parsed_response[:errors][0][:message]).to eq('User does not exist')
   end
 
-  xit 'gives an appropriate error message when password does not match' do
+  it 'gives an appropriate error message when password does not match' do
     body = { 'email': 'firenationrules@avatar.com', 'password': 'ilovefire' }
     post '/api/v1/sessions', headers: @headers, params: body, as: :json
 
     expect(response.status).to eq(400)
     parsed_response = JSON.parse(response.body, symbolize_names: true)
     expect(parsed_response).to have_key :errors
-    expect(parsed_response[:errors][0][:message]).to eq('Password does not match')
+    expect(parsed_response[:errors][0][:message]).to eq('Incorrect password')
   end
 end

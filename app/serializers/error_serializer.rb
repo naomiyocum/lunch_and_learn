@@ -58,4 +58,16 @@ class ErrorSerializer
       ]
     }
   end
+
+  def self.incorrect_password
+    {
+      'errors': [
+        {
+          "status": 'PLEASE TRY AGAIN',
+          "message": "Incorrect password",
+          "code": 400
+        }
+      ]
+    }
+  end
 end
