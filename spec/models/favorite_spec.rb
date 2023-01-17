@@ -15,8 +15,8 @@ RSpec.describe Favorite do
   describe 'class methods' do
     describe '.find_my_favorites' do
       it 'returns favorites of a particular user' do
-        @user = create(:user)
-        @user_2 = create(:user)
+        @user = create(:user, password: 'password123', password_confirmation: 'password123')
+        @user_2 = create(:user, password: 'password123', password_confirmation: 'password123')
         create_list(:favorite, 4, user: @user, api_key: @user.api_key)
         @favorite = create(:favorite, user: @user_2)
         
