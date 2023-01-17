@@ -155,6 +155,30 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   ```
   <br>
   
+- ### POST /api/v1/sessions
+  > logs user in
+  
+   | Body (JSON)        | Type          |  |
+  | ------------- |:-------------:| -----:|
+  | email      | string | Required |
+  | password      | string | Required |
+  
+  #### Example Response
+  ```
+  {
+    "data": {
+        "id": "4",
+        "type": "user",
+        "attributes": {
+            "name": "Sanji",
+            "email": "sanji@onepiece.jp",
+            "api_key": "/cN53CTIOr2xHD/93BVpvg=="
+          }
+      }
+  }
+  ```
+  <br>
+  
 - ### POST /api/v1/favorites
   > adds recipes to a favorited list for a particular user
   
