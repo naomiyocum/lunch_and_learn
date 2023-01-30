@@ -33,15 +33,34 @@ We are building an application that allows users to search for cuisines by count
 - Rails 5.2.8
 
 ## Usage
-Clone the repy but running `git clone` with the copied URL onto your local machine.
+You will need to get your own free API keys from the following services:
+1. [Edamam Recipe API](https://developer.edamam.com/edamam-recipe-api)
+2. [YouTube API](https://developers.google.com/youtube/v3/getting-started)
+3. [Unsplash API](https://unsplash.com/documentation#getting-started)
+
+After getting your 3 keys, fork and clone this repo to your local machine.
 
 Then, run the following commands:
 ```
 cd lunch_and_learn
 bundle install
+bundle exec figaro install
 rails db:{drop,create,migrate,seed}
+```
+
+In the `config/application.yml` file, copy and paste the code block below and replace the values with your API keys:
+```ruby
+edamam-app-id: <YOUR_EDAMAM_API_ID>
+edamam-app-key: <YOUR_EDAMAM_API_KEY>
+youtube-key: <YOUR_YOUTUBE_API_KEY>
+unsplash-key: <YOUR_UNSPLASH_API_KEY>
+```
+
+Start your server in the root directory:
+```
 rails s
 ```
+
 Lastly, head to your web browser or Postman to consume my API. The base URL is `http://localhost:3000` and endpoints are listed below!
 
 ## API Endpoints
