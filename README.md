@@ -83,7 +83,7 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   <sub><sup>if no country is provided, a random country will be searched for you</sup></sub>
   
     #### Example Response
-  ```
+  ```json
   {
     "data": [
         {
@@ -121,7 +121,7 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   <sub><sup>if no country is provided, a random country will be searched for you</sup></sub>
   
   #### Example Response
-  ```
+  ```json
   {
     "data": {
         "id": null,
@@ -159,7 +159,7 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   | password_confirmation      | string | Required |
   
   #### Example Response
-  ```
+  ```json
   {
     "data": {
         "id": "3",
@@ -183,7 +183,7 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   | password      | string | Required |
   
   #### Example Response
-  ```
+  ```json
   {
     "data": {
         "id": "4",
@@ -209,7 +209,7 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   | recipe_title      | string | Required |
   
   #### Successful Response
-  ```
+  ```json
   {
     "success": "Favorite added successfully"
   }
@@ -224,7 +224,7 @@ Lastly, head to your web browser or Postman to consume my API. The base URL is `
   | api_key      | string | Required |
   
   #### Example Response
-  ```
+  ```json
   {
     "data": [
         {
