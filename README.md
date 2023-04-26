@@ -63,6 +63,8 @@ rails s
 
 Lastly, head to your web browser or Postman to consume my API. The base URL is `http://localhost:3000` and endpoints are listed below!
 
+You can stop the server by clicking `Ctrl + C` on your keyboard.
+
 ## API Endpoints
 
 #### REQUIRED HEADERS
