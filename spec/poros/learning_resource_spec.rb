@@ -18,7 +18,7 @@ RSpec.describe LearningResource do
       }
     ]
 
-    resource = LearningResource.new(country, video, photos)
+    resource = LearningResource.new(country: country, vid: video, pics: photos)
 
     expect(resource).to be_an_instance_of LearningResource
     expect(resource.country).to eq('Japan')
