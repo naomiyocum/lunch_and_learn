@@ -5,7 +5,7 @@ RSpec.describe CountriesService do
     describe '.conn' do
       it 'connects to the REST Countries API' do
         conn = CountriesService.conn
-        expect(conn.headers).to have_value 'Faraday v2.7.2'
+        expect(conn.headers).to have_value 'Faraday v2.7.5'
       end
     end
 
